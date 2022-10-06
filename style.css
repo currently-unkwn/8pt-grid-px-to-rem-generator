@@ -13,8 +13,14 @@ html {
   --color-blue-6: hsl(208, 80%, 52%);
   --color-blue-9: hsl(209, 75%, 38%);
   --color-indigo-5: hsl(228, 94%, 67%);
+  --color-indigo-6: hsl(228, 89%, 63%);
   --color-violet-5: hsl(255, 91%, 67%);
+  --color-violet-6: hsl(255, 86%, 63%);
   --color-grape-5: hsl(288, 75%, 64%);
+  --color-grape-6: hsl(288, 67%, 58%);
+
+  --default-start-animation: 200ms cubic-bezier(0.44, 0.21, 0, 1);
+  --default-exit-animation: 400ms cubic-bezier(0.44, 0.21, 0, 1);
 
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, avenir next,
     avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
@@ -137,6 +143,8 @@ h3 {
   outline: none;
 }
 
+/* Hero Section */
+
 .hero {
   padding-top: calc(168px - 10px);
   padding-bottom: calc(104px - 5px);
@@ -162,6 +170,8 @@ h3 {
   font-size: calc(12 / 16 * 1rem);
 }
 
+/* Generate Number Section */
+
 .generate-number {
   padding-top: calc(48px - 1px);
   padding-bottom: calc(64px - 1px);
@@ -183,19 +193,19 @@ h3 {
   padding-right: 4px;
   padding-left: calc(24px - 6px);
 
-  transition: border-color 400ms cubic-bezier(0.44, 0.21, 0, 1);
+  transition: border-color var(--default-exit-animation);
 }
 
 .range-input::placeholder {
   color: var(--color-gray-4);
 
-  transition: color 400ms cubic-bezier(0.44, 0.21, 0, 1);
+  transition: color var(--default-exit-animation);
 }
 
 .range-input:hover {
   border-color: var(--color-gray-7);
 
-  transition: border-color 200ms cubic-bezier(0.44, 0.21, 0, 1);
+  transition: border-color var(--default-start-animation);
 }
 
 .btn-generate,
@@ -211,15 +221,93 @@ h3 {
   color: var(--color-white);
   border-radius: 4px;
   will-change: transform;
-  transition: background 400ms cubic-bezier(0.44, 0.21, 0, 1);
+  transition: background var(--default-exit-animation);
 }
 
 .btn-generate:hover {
   background: var(--color-blue-6);
 
-  transition: background 200ms cubic-bezier(0.44, 0.21, 0, 1);
+  transition: background var(--default-start-animation);
 }
 
 .btn-generate:active {
   background: var(--color-blue-9);
+}
+
+/* Grid Multiplier Section */
+
+.grid-multiplier-wrap {
+  padding-top: calc(48px - 10px);
+  padding-bottom: calc(64px - 10px);
+  border-bottom: 1px solid var(--color-gray-3);
+}
+
+.grid-multiplier-group:not(:last-of-type) {
+  margin-bottom: calc(96px - 22px);
+}
+
+.grid-multiplier-title {
+  font-size: calc(24 / 16 * 1rem);
+  margin-bottom: calc(40px - 15px);
+}
+
+.grid-multiplier-values-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(40px - 18px) calc(40px - 2px);
+}
+
+.rem-value,
+.px-value {
+  cursor: pointer;
+}
+
+.rem-value {
+  font-size: calc(18 / 16 * 1rem);
+  color: var(--color-gray-6);
+
+  transition: color var(--default-exit-animation);
+}
+
+.rem-value:hover {
+  color: var(--color-gray-7);
+
+  transition: color var(--default-start-animation);
+}
+
+.px-value {
+  font-size: calc(32 / 16 * 1rem);
+  font-weight: 800;
+
+  transition: color var(--default-exit-animation);
+}
+
+.grid-multiplier--8pt .px-value {
+  color: var(--color-indigo-5);
+}
+
+.grid-multiplier--8pt .px-value:hover {
+  color: var(--color-indigo-6);
+
+  transition: color var(--default-start-animation);
+}
+
+.grid-multiplier--4pt .px-value {
+  color: var(--color-violet-5);
+}
+
+.grid-multiplier--4pt .px-value:hover {
+  color: var(--color-violet-6);
+
+  transition: color var(--default-start-animation);
+}
+
+.grid-multiplier--2pt .px-value {
+  color: var(--color-grape-5);
+}
+
+.grid-multiplier--2pt .px-value:hover {
+  color: var(--color-grape-6);
+
+  transition: color var(--default-start-animation);
 }
