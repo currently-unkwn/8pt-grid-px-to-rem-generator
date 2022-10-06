@@ -4,7 +4,9 @@ html {
   --color-white: hsl(0deg 0% 100%);
   --color-black: hsl(0deg 0% 4%);
 
-  --font-family-sans-serif: "-apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, avenir next,
+    avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+    sans-serif;
 }
 
 /** RESET AND GLOBAL STYLES */
@@ -85,5 +87,8 @@ h6 {
 
 /* MAIN STYLES */
 
-body {
+.max-width-wrapper {
+  max-width: calc(1400 / 16 * 1rem);
+  padding: 0 32px;
+  margin: 0 auto;
 }

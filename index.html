@@ -8,5 +8,73 @@
     <link rel="stylesheet" href="style.css" />
     <script defer src="scripts.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="max-width-wrapper">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>
+            8pt grid px to rem <br />
+            generator
+          </h1>
+          <div class="sub">With ocassional uses of 2 and 4.</div>
+          <div class="metadata">Version 1.0.0</div>
+        </div>
+      </section>
+
+      <main>
+        <section class="generate-number">
+          <div class="range">
+            <h3>Enter number between 1 and 200:</h3>
+            <input type="number" class="range-input" min="1" max="200" />
+          </div>
+
+          <button class="btn btn-generate">Generate</button>
+        </section>
+
+        <section class="grid-multiplier-wrap">
+          <section class="grid-multiplier-group grid-multiplier--8pt">
+            <div class="grid-multiplier-title-wrap">
+              <h3 class="grid-multiplier-title">8pt</h3>
+              <div class="triangle"></div>
+            </div>
+
+            <div class="grid-multiplier-values-wrap">
+              <div class="grid-multiplier-value">
+                <div class="rem-value">0.5rem</div>
+                <div class="px-value">8px</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="grid-multiplier-group grid-multiplier--4pt">
+            <div class="grid-multiplier-title-wrap">
+              <h3 class="grid-multiplier-title">4pt</h3>
+              <div class="triangle"></div>
+            </div>
+
+            <div class="grid-multiplier-values-wrap">
+              <div class="grid-multiplier-value">
+                <div class="rem-value">0.25rem</div>
+                <div class="px-value">4px</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="grid-multiplier-group grid-multiplier--2pt">
+            <div class="grid-multiplier-title-wrap">
+              <h3 class="grid-multiplier-title">2pt</h3>
+              <div class="triangle"></div>
+            </div>
+
+            <div class="grid-multiplier-values-wrap">
+              <div class="grid-multiplier-value">
+                <div class="rem-value">0.125rem</div>
+                <div class="px-value">2px</div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
