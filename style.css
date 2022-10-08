@@ -13,11 +13,23 @@ html {
   --color-blue-6: hsl(208, 80%, 52%);
   --color-blue-9: hsl(209, 75%, 38%);
   --color-indigo-5: hsl(228, 94%, 67%);
-  --color-indigo-6: hsl(228, 89%, 63%);
+  --color-indigo-7: hsl(228, 81%, 59%);
   --color-violet-5: hsl(255, 91%, 67%);
-  --color-violet-6: hsl(255, 86%, 63%);
+  --color-violet-7: hsl(255, 78%, 60%);
   --color-grape-5: hsl(288, 75%, 64%);
-  --color-grape-6: hsl(288, 67%, 58%);
+  --color-grape-7: hsl(288, 56%, 52%);
+
+  --color-blue: var(--color-blue-5);
+  --color-indigo: var(--color-indigo-5);
+  --color-violet: var(--color-violet-5);
+  --color-grape: var(--color-grape-5);
+
+  --color-blue-hover: var(--color-blue-6);
+  --color-blue-active: var(--color-blue-9);
+
+  --color-indigo-hover: var(--color-indigo-7);
+  --color-violet-hover: var(--color-violet-7);
+  --color-grape-hover: var(--color-grape-7);
 
   --default-start-animation: 200ms cubic-bezier(0.44, 0.21, 0, 1);
   --default-exit-animation: 400ms cubic-bezier(0.44, 0.21, 0, 1);
@@ -217,7 +229,7 @@ h3 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.7px;
-  background: var(--color-blue-5);
+  background: var(--color-blue);
   color: var(--color-white);
   border-radius: 4px;
   will-change: transform;
@@ -225,13 +237,13 @@ h3 {
 }
 
 .btn-generate:hover {
-  background: var(--color-blue-6);
+  background: var(--color-blue-hover);
 
   transition: background var(--default-start-animation);
 }
 
 .btn-generate:active {
-  background: var(--color-blue-9);
+  background: var(--color-blue-active);
 }
 
 /* Grid Multiplier Section */
@@ -252,9 +264,12 @@ h3 {
 }
 
 .grid-multiplier-values-wrap {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  gap: calc(40px - 18px) calc(40px - 2px);
+  gap: calc(40px - 18px) calc(40px - 2px); */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: calc(40px - 18px) 0;
 }
 
 .rem-value,
@@ -283,31 +298,47 @@ h3 {
 }
 
 .grid-multiplier--8pt .px-value {
-  color: var(--color-indigo-5);
+  color: var(--color-indigo);
 }
 
 .grid-multiplier--8pt .px-value:hover {
-  color: var(--color-indigo-6);
+  color: var(--color-indigo-hover);
 
   transition: color var(--default-start-animation);
 }
 
 .grid-multiplier--4pt .px-value {
-  color: var(--color-violet-5);
+  color: var(--color-violet);
 }
 
 .grid-multiplier--4pt .px-value:hover {
-  color: var(--color-violet-6);
+  color: var(--color-violet-hover);
 
   transition: color var(--default-start-animation);
 }
 
 .grid-multiplier--2pt .px-value {
-  color: var(--color-grape-5);
+  color: var(--color-grape);
 }
 
 .grid-multiplier--2pt .px-value:hover {
-  color: var(--color-grape-6);
+  color: var(--color-grape-hover);
 
   transition: color var(--default-start-animation);
+}
+
+@media (max-width: 34.5rem) {
+  .range-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .range-input {
+    width: 100%;
+  }
+
+  .btn-generate {
+    width: 100%;
+  }
 }
