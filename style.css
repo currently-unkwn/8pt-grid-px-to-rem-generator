@@ -6,6 +6,7 @@ html {
 
   --color-gray-3: hsl(210, 14%, 89%);
   --color-gray-4: hsl(210, 14%, 83%);
+  --color-gray-5: hsl(210, 11%, 71%);
   --color-gray-6: hsl(210, 7%, 56%);
   --color-gray-7: hsl(210, 9%, 31%);
 
@@ -169,7 +170,8 @@ h3 {
 }
 
 .sub,
-.metadata {
+.metadata,
+.metadata a {
   color: var(--color-gray-6);
 }
 
@@ -180,6 +182,17 @@ h3 {
 
 .metadata {
   font-size: calc(12 / 16 * 1rem);
+}
+
+.metadata a {
+  text-decoration: none;
+
+  transition: color var(--default-exit-animation);
+}
+
+.metadata a:hover {
+  color: var(--color-gray-7);
+  transition: color var(--default-start-animation);
 }
 
 /* Generate Number Section */
@@ -325,6 +338,16 @@ h3 {
   color: var(--color-grape-hover);
 
   transition: color var(--default-start-animation);
+}
+
+/* Footer */
+footer {
+  padding: calc(32px - 5px) 0;
+}
+
+.copy {
+  font-size: calc(14 / 16 * 1rem);
+  color: var(--color-gray-5);
 }
 
 @media (max-width: 34.5rem) {
