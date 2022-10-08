@@ -4,12 +4,14 @@
  * TODO:
  * 1. Copy functionality when clicking on the value
  * 2. Make grid values (8pt, 4pt, 2pt) in the accordion
- * 3. Try to use MAP instead of Objects.
  */
 
 // Elements
 const btnGenerate = document.querySelector(".btn-generate");
 const inputRange = document.querySelector(".range-input");
+
+const gridValues8ptWrap = document.querySelector(".grid-multiplier--8pt");
+
 const gridValues8pt = document.querySelector(
   ".grid-multiplier--8pt .grid-multiplier-values-wrap"
 );
@@ -104,6 +106,9 @@ const btnGenerateHandler = function () {
 
   generateGridValues(rangeValue);
   displayGridValues(gridValues);
+
+  // Scroll to 8pt Grid Value
+  gridValues8ptWrap.scrollIntoView({ behavior: "smooth" });
 };
 
 // Event Listeners
