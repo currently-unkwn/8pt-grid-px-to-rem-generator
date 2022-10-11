@@ -22,7 +22,13 @@ const gridValues2pt = document.querySelector(
   ".grid-multiplier--2pt .grid-multiplier-values-wrap"
 );
 
+const gridMultiplierGroupElements = document.querySelectorAll(
+  ".grid-multiplier-group"
+);
+
 // Initialize
+
+let elHeight;
 
 const gridValues = {
   "8pt": null,
@@ -109,8 +115,21 @@ const btnGenerateHandler = function () {
 
   // Scroll to 8pt Grid Value
   gridValues8ptWrap.scrollIntoView({ behavior: "smooth" });
+
+  // Set Content to Open
+  gridValues8ptWrap.classList.add("open");
 };
 
 // Event Listeners
 
 btnGenerate.addEventListener("click", btnGenerateHandler);
+
+// Grid Muliplier Accordion Functionality
+
+const gridMultiplierGroupHandler = function () {
+  this.classList.toggle("open");
+};
+
+gridMultiplierGroupElements.forEach((element) => {
+  element.addEventListener("click", gridMultiplierGroupHandler);
+});
