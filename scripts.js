@@ -191,16 +191,16 @@ const btnGenerateHandler = function () {
   generateGridValues(rangeValue);
   displayGridValues(gridValues);
 
-  // Scroll to 8pt Grid Value
-  gridValues8ptWrap.scrollIntoView({ behavior: "smooth" });
-
-  // Set 8pt Grid Content to Open
-  gridValues8ptWrap.classList.add("open");
-
   // Copy to clipboard functionality
   getPxAndRemElements();
 
   copyPxOrRemToClipboard();
+
+  // Set 8pt Grid Content to Open
+  gridValues8ptWrap.classList.add("open");
+
+  // Scroll to 8pt Grid Value
+  gridValues8ptWrap.scrollIntoView({ behavior: "smooth" });
 };
 
 btnGenerate.addEventListener("click", btnGenerateHandler);
