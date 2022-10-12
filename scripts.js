@@ -7,6 +7,8 @@
 
 // ELEMENTS
 
+const body = document.querySelector("body");
+
 const btnGenerate = document.querySelector(".btn-generate");
 const inputRange = document.querySelector(".range-input");
 
@@ -102,6 +104,46 @@ const displayGridValues = function (gridValues) {
   }
 };
 
+// Toast
+
+const renderToast = function (status, value = "") {
+  let statusClass, message;
+
+  const statusLowercased = status.toLocaleLowerCase();
+
+  if (statusLowercased === "success") {
+    statusClass = "toast--success";
+    message = "Copied: ";
+  }
+
+  if (statusLowercased === "error") {
+    statusClass = "toast--error";
+    message = "Error copying! Please Try again!";
+  }
+
+  const toastWrapper = document.createElement("div");
+  toastWrapper.classList.add("toast-wrapper");
+
+  const toastHtml = `
+    <div class="toast ${statusClass}">
+      <div class="toast-message">${message}</div>
+      <p class="copied-value">${value}</p>
+    </div>
+  `;
+
+  toastWrapper.insertAdjacentHTML("beforeend", toastHtml);
+
+  body.append(toastWrapper);
+
+  setTimeout(() => {
+    toastWrapper.classList.add("hide");
+
+    setTimeout(() => {
+      toastWrapper.remove();
+    }, 1000);
+  }, 1500);
+};
+
 // Copy to clipboard
 
 const getPxAndRemElements = () =>
@@ -128,9 +170,10 @@ const copyPxOrRemToClipboard = function () {
         // TODO: Should be refactored?
         try {
           await copyToClipboard(value);
-          console.log("Copied: " + value);
+
+          renderToast("success", value);
         } catch (error) {
-          console.log("Error copying", error);
+          renderToast("error");
         }
       }
     });

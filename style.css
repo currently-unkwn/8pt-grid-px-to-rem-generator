@@ -32,6 +32,21 @@ html {
   --color-violet-hover: var(--color-violet-7);
   --color-grape-hover: var(--color-grape-7);
 
+  --color-green-7: hsl(131, 54%, 40%);
+  --color-red-7: hsl(0, 86%, 59%);
+
+  --color-success: var(--color-green-7);
+  --color-error: var(--color-red-7);
+
+  --shadow-color: 0deg 0% 0%;
+  --shadow-elevation-high: 0px 0.3px 0.3px hsl(var(--shadow-color) / 0.05),
+    0px 1.4px 1.6px -0.4px hsl(var(--shadow-color) / 0.05),
+    0px 2.6px 2.9px -0.8px hsl(var(--shadow-color) / 0.05),
+    0px 4.5px 5.1px -1.2px hsl(var(--shadow-color) / 0.05),
+    0px 7.5px 8.5px -1.6px hsl(var(--shadow-color) / 0.05),
+    -0.1px 12.1px 13.7px -2px hsl(var(--shadow-color) / 0.05),
+    -0.1px 19px 21.5px -2.4px hsl(var(--shadow-color) / 0.05);
+
   --default-start-animation: 200ms cubic-bezier(0.44, 0.21, 0, 1);
   --default-exit-animation: 400ms cubic-bezier(0.44, 0.21, 0, 1);
 
@@ -267,10 +282,6 @@ h3 {
   border-bottom: 1px solid var(--color-gray-3);
 }
 
-.grid-multiplier-group:not(:last-of-type) {
-  margin-bottom: calc(96px - 22px);
-}
-
 .grid-multiplier-title-wrap {
   display: flex;
   align-items: center;
@@ -308,6 +319,8 @@ h3 {
   display: none;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: calc(40px - 18px) 0;
+
+  margin-bottom: calc(96px - 22px);
 }
 
 .rem-value,
@@ -400,5 +413,89 @@ footer {
 
   .btn-generate {
     width: 100%;
+  }
+}
+
+/* Toast */
+.toast-wrapper {
+  --spacing: 16px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+
+  padding: var(--spacing);
+
+  pointer-events: none;
+}
+
+.toast {
+  --blur: 8px;
+  --spread: calc(var(--blur) * -1);
+  --offset: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 600px;
+  padding: 16px 24px;
+  background: white;
+  /* box-shadow: 0px var(--offset) var(--blur) var(--spread) hsl(0deg 0% 0% / 0.2); */
+  box-shadow: var(--shadow-elevation-high);
+  border: 1px solid var(--color-gray-3);
+  border-radius: 4px;
+
+  animation: slide-in 500ms backwards;
+}
+
+.toast-wrapper.hide .toast {
+  animation: slide-out 500ms forwards;
+}
+
+.toast.toast--success {
+  border-color: var(--color-success);
+}
+
+.toast--success .toast-message {
+  color: var(--color-success);
+}
+
+.toast.toast--error {
+  border-color: var(--color-error);
+}
+
+.toast--error .toast-message {
+  color: var(--color-error);
+}
+
+.toast-message {
+  font-weight: 500;
+}
+
+.copied-value {
+  font-weight: 700;
+  color: var(--color-gray-5);
+}
+
+/* KEYFRAMES */
+
+@keyframes slide-in {
+  from {
+    transform: translateY(calc(100% + var(--spacing)));
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(calc(100% + var(--spacing)));
   }
 }
