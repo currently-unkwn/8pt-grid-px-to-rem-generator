@@ -313,6 +313,7 @@ h3 {
 .rem-value,
 .px-value {
   cursor: pointer;
+  width: fit-content;
 }
 
 .rem-value {

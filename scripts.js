@@ -2,11 +2,11 @@
 
 /**
  * TODO:
- * 1. Copy functionality when clicking on the value
- * 2. Make grid values (8pt, 4pt, 2pt) in the accordion
+ * Notification message about a successful or unsuccessful copied value.
  */
 
-// Elements
+// ELEMENTS
+
 const btnGenerate = document.querySelector(".btn-generate");
 const inputRange = document.querySelector(".range-input");
 
@@ -22,13 +22,11 @@ const gridValues2pt = document.querySelector(
   ".grid-multiplier--2pt .grid-multiplier-values-wrap"
 );
 
-const gridMultiplierGroupElements = document.querySelectorAll(
-  ".grid-multiplier-group"
+const gridMultiplierTitleWrapElements = document.querySelectorAll(
+  ".grid-multiplier-title-wrap"
 );
 
-// Initialize
-
-let elHeight;
+// INITIALIZE
 
 const gridValues = {
   "8pt": null,
@@ -39,7 +37,7 @@ const gridValues = {
 const RANGE_START = 1;
 const RANGE_END = 200;
 
-let pt8, pt4, pt2;
+let pt8, pt4, pt2, pxAndRemElements;
 
 const init = function () {
   gridValues8pt.innerHTML = "";
@@ -57,7 +55,9 @@ const init = function () {
 
 init();
 
-// Functions
+// FUNCTIONS
+
+// Generate 8, 4, 2 grid
 
 const generateGridValues = function (range) {
   const TYPOGRAPHY_ROOT_SIZE = 16;
@@ -102,6 +102,41 @@ const displayGridValues = function (gridValues) {
   }
 };
 
+// Copy to clipboard
+
+const getPxAndRemElements = () =>
+  (pxAndRemElements = document.querySelectorAll(".grid-multiplier-value"));
+
+const copyToClipboard = async (valueToClipboard) => {
+  if (!valueToClipboard) {
+    throw new Error();
+  }
+
+  return await navigator.clipboard.writeText(valueToClipboard);
+};
+
+const copyPxOrRemToClipboard = function () {
+  pxAndRemElements.forEach((pxAndRemElement) => {
+    pxAndRemElement.addEventListener("click", async function (event) {
+      const isRemOrPxElement =
+        event.target.classList.contains("rem-value") ||
+        event.target.classList.contains("px-value");
+
+      if (isRemOrPxElement) {
+        const value = event.target.textContent;
+
+        // TODO: Should be refactored?
+        try {
+          await copyToClipboard(value);
+          console.log("Copied: " + value);
+        } catch (error) {
+          console.log("Error copying", error);
+        }
+      }
+    });
+  });
+};
+
 const btnGenerateHandler = function () {
   // Reset Fields
   init();
@@ -116,20 +151,25 @@ const btnGenerateHandler = function () {
   // Scroll to 8pt Grid Value
   gridValues8ptWrap.scrollIntoView({ behavior: "smooth" });
 
-  // Set Content to Open
+  // Set 8pt Grid Content to Open
   gridValues8ptWrap.classList.add("open");
-};
 
-// Event Listeners
+  // Copy to clipboard functionality
+  getPxAndRemElements();
+
+  copyPxOrRemToClipboard();
+};
 
 btnGenerate.addEventListener("click", btnGenerateHandler);
 
-// Grid Muliplier Accordion Functionality
+// Accordion Functionality
 
 const gridMultiplierGroupHandler = function () {
-  this.classList.toggle("open");
+  const gridMultiplierGroupElement = this.closest(".grid-multiplier-group");
+
+  gridMultiplierGroupElement.classList.toggle("open");
 };
 
-gridMultiplierGroupElements.forEach((element) => {
+gridMultiplierTitleWrapElements.forEach((element) => {
   element.addEventListener("click", gridMultiplierGroupHandler);
 });
