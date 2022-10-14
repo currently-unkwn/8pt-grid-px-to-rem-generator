@@ -400,22 +400,6 @@ footer {
   color: var(--color-gray-5);
 }
 
-@media (max-width: 34.5rem) {
-  .range-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .range-input {
-    width: 100%;
-  }
-
-  .btn-generate {
-    width: 100%;
-  }
-}
-
 /* Toast */
 .toast-wrapper {
   --spacing: 16px;
@@ -478,6 +462,28 @@ footer {
 .copied-value {
   font-weight: 700;
   color: var(--color-gray-5);
+}
+
+/* MEDIA STYLES */
+
+@media (max-width: 34.5rem) {
+  .hero {
+    padding-top: calc(136px - 10px);
+  }
+
+  .range-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .range-input {
+    width: 100%;
+  }
+
+  .btn-generate {
+    width: 100%;
+  }
 }
 
 /* KEYFRAMES */
