@@ -107,18 +107,20 @@ const displayGridValues = function (gridValues) {
 // Toast
 
 const renderToast = function (status, value = "") {
-  let statusClass, message;
+  let statusClass, message, iconType;
 
   const statusLowercased = status.toLocaleLowerCase();
 
   if (statusLowercased === "success") {
     statusClass = "toast--success";
     message = "Copied: ";
+    iconType = "checkmark-circle";
   }
 
   if (statusLowercased === "error") {
     statusClass = "toast--error";
     message = "Error copying! Please Try again!";
+    iconType = "alert-circle";
   }
 
   const toastWrapper = document.createElement("div");
@@ -126,6 +128,7 @@ const renderToast = function (status, value = "") {
 
   const toastHtml = `
     <div class="toast ${statusClass}">
+      <ion-icon class="toast-icon" name="${iconType}"></ion-icon>
       <div class="toast-message">${message}</div>
       <p class="copied-value">${value}</p>
     </div>

@@ -32,11 +32,15 @@ html {
   --color-violet-hover: var(--color-violet-7);
   --color-grape-hover: var(--color-grape-7);
 
-  --color-green-7: hsl(131, 54%, 40%);
-  --color-red-7: hsl(0, 86%, 59%);
+  --color-teal-1: hsl(161, 79%, 95%);
+  --color-teal-5: hsl(162, 73%, 46%);
+  --color-red-1: hsl(0, 100%, 98%);
+  --color-red-5: hsl(0, 100%, 71%);
 
-  --color-success: var(--color-green-7);
-  --color-error: var(--color-red-7);
+  --color-success: var(--color-teal-1);
+  --color-success-text: var(--color-teal-5);
+  --color-error: var(--color-red-1);
+  --color-error-text: var(--color-red-5);
 
   --shadow-color: 0deg 0% 0%;
   --shadow-elevation-high: 0px 0.3px 0.3px hsl(var(--shadow-color) / 0.05),
@@ -428,11 +432,16 @@ footer {
   padding: 16px 24px;
   background: white;
   /* box-shadow: 0px var(--offset) var(--blur) var(--spread) hsl(0deg 0% 0% / 0.2); */
-  box-shadow: var(--shadow-elevation-high);
-  border: 1px solid var(--color-gray-3);
-  border-radius: 4px;
+  /* box-shadow: var(--shadow-elevation-high); */
+  /* border: 1px solid var(--color-gray-3); */
+  border-radius: 22px;
 
   animation: slide-in 500ms backwards;
+}
+
+.toast-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .toast-wrapper.hide .toast {
@@ -440,19 +449,27 @@ footer {
 }
 
 .toast.toast--success {
-  border-color: var(--color-success);
+  background-color: var(--color-success);
 }
 
 .toast--success .toast-message {
-  color: var(--color-success);
+  color: var(--color-success-text);
+}
+
+.toast--success .toast-icon {
+  fill: var(--color-success-text);
 }
 
 .toast.toast--error {
-  border-color: var(--color-error);
+  background-color: var(--color-error);
 }
 
 .toast--error .toast-message {
-  color: var(--color-error);
+  color: var(--color-error-text);
+}
+
+.toast--error .toast-icon {
+  fill: var(--color-error-text);
 }
 
 .toast-message {
